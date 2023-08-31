@@ -20,10 +20,11 @@ if ARCHIVO_SQLITE is None:
 
 def crear_registro_autorizacion(registro_nuevo):
     # cursor object
+    nuevo_id = str(uuid4()).replace("-", "")
     connection_obj = sqlite3.connect(ARCHIVO_SQLITE)
     time_stamp = datetime.now()
     registro_nuevo["fecha_creacion"] = time_stamp
-    registro_nuevo["id"] = str(uuid4()).replace("-", "")
+    registro_nuevo["id"] = nuevo_id
     registro_nuevo["beneficiario"] = registro_nuevo["beneficiario"].upper()
     cursor_obj = connection_obj.cursor()
     # Inserting data into table
@@ -35,6 +36,7 @@ def crear_registro_autorizacion(registro_nuevo):
     connection_obj.commit()
     # Close the connection
     connection_obj.close()
+    return nuevo_id
 
 
 def select_by_beneficiario(beneficiario, estado):
@@ -51,6 +53,21 @@ def select_by_beneficiario(beneficiario, estado):
     registros = [dict(zip(headers, row)) for row in cursor_obj.fetchall()]
     cursor_obj.close()
     return registros
+
+
+def consultar_por_id(id_autorizacion):
+    # cursor object
+    connection_obj = sqlite3.connect(ARCHIVO_SQLITE)
+    cursor_obj = connection_obj.cursor()
+    # Inserting data into table
+    cursor_obj.execute(
+        "SELECT * FROM autorizacion WHERE id = :id_autorizacion",
+        {"id_autorizacion": id_autorizacion},
+    )
+    headers = [i[0] for i in cursor_obj.description]
+    registros = [dict(zip(headers, row)) for row in cursor_obj.fetchall()]
+    cursor_obj.close()
+    return registros[0]
 
 
 def cambiar_estado(id_autorizacion, nuevo_estado):

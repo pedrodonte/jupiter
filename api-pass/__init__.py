@@ -3,6 +3,7 @@ from .autorizacion import (
     select_by_beneficiario,
     cambiar_estado,
     crear_registro_autorizacion,
+    consultar_por_id,
 )
 
 app = Flask(__name__)
@@ -30,7 +31,12 @@ def crear():
     try:
         data = request.get_json()
 
-        crear_registro_autorizacion(data)
-        return jsonify({"success": True})
+        nuevo_id = crear_registro_autorizacion(data)
+        return jsonify({"success": True, "id": nuevo_id})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
+
+
+@app.route("/autorizacion/consultar/<id_autorizacion>", methods=["GET"])
+def consultar(id_autorizacion):
+    return jsonify(consultar_por_id(id_autorizacion))
