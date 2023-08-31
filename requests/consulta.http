@@ -1,1 +1,1 @@
-GET http://127.0.0.1:15000/autorizacion/16184826-3/Aprobada
+GET https://api.fonasa.cl/poc/autorizacion/20503178-2/Pendiente

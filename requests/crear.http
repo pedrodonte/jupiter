@@ -1,10 +1,10 @@
-POST http://localhost:15000/autorizacion/crear HTTP/1.1
+POST https://api.fonasa.cl/poc/autorizacion/crear HTTP/1.1
 content-type: application/json
 
 {
-    "beneficiario": "16184826-3",
+    "beneficiario": "20503178-2",
     "estado": "Pendiente",
-    "descripcion": "Aprobado por el jefe"
+    "descripcion": "Compra de medicamentos"
 }
 
 
