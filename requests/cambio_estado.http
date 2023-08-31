@@ -1,0 +1,11 @@
+
+
+POST http://localhost:15000/autorizacion/cambio-estado HTTP/1.1
+content-type: application/json
+
+{
+    "estado": "Aprobada",
+   
+    "id": "892c3d7574c947b898c341e26f1ab3a1"
+}
+

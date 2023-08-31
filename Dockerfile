@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.11-slim-bullseye
 
 # We copy just the requirements.txt first to leverage Docker cache
 COPY ./requirements.txt /app/requirements.txt
@@ -10,7 +10,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && dpkg-reconfigure -f nonint
 
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt 
 
 COPY . /app
 

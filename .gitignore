@@ -1,2 +1,4 @@
 venv
 .vscode
+api-pass/__pycache__/
+*.pyc

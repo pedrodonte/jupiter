@@ -1,0 +1,10 @@
+POST http://localhost:15000/autorizacion/crear HTTP/1.1
+content-type: application/json
+
+{
+    "beneficiario": "16184826-3",
+    "estado": "Pendiente",
+    "descripcion": "Aprobado por el jefe"
+}
+
+
