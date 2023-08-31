@@ -39,4 +39,7 @@ def crear():
 
 @app.route("/autorizacion/consultar/<id_autorizacion>", methods=["GET"])
 def consultar(id_autorizacion):
-    return jsonify(consultar_por_id(id_autorizacion))
+    try:
+        return jsonify(consultar_por_id(id_autorizacion))
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})

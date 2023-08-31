@@ -1,3 +1,4 @@
+ .\venv\Scripts\Activate.ps1
 $env:ARCHIVO_SQLITE="C:\dev\jupiter\autorizaciones.db"
 $env:FLASK_APP="api-pass:app"
 $env:FLASK_ENV="development"
